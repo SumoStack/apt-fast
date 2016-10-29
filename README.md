@@ -13,9 +13,9 @@ Public License as published by the Free Software Foundation; either
 version 3 of the License, or (at your option) any later version.
 -->
 
-apt-fast 1.8
+APT-FAST 2.0
 ============
-apt-fast is a shellscript wrapper for apt-get and aptitude that can drastically improve apt download times by downloading packages in parallel, with multiple connections per package.
+APT-FAST is a shellscript wrapper for apt-get and aptitude that can drastically improve apt download times by downloading packages in parallel, with multiple connections per package.
 
 Setup/Install
 -------------

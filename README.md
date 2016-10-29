@@ -12,7 +12,7 @@ You may distribute this file under the terms of the GNU General
 Public License as published by the Free Software Foundation; either
 version 3 of the License, or (at your option) any later version.
 -->
-
+![APT-FAST](https://github.com/sumoral/apt-fast/blob/master/apt-fast.png "APT-FAST")
 APT-FAST 2.0
 ============
 APT-FAST is a shellscript wrapper for apt-get and aptitude that can drastically improve apt download times by downloading packages in parallel, with multiple connections per package.

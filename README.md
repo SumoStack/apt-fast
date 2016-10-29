@@ -104,11 +104,11 @@ License
 -------
 Consider APT-FAST and all of its derivatives licensed under the GNU GPLv3+.
 
-Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
+Copyright: 2008-2012 [Matt Parnell](http://www.mattparnell.com)
 
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
 
-Modified for Sumo-Stack, revisions - 2016 Will Preston
+Modified for [Sumo-Stack](http://sumostack.com), revisions - 2016 [Will Preston](https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-using-apt-fast-script-971a3a97f388#.oorvdah99)
 
 ### Special thanks
 

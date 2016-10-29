@@ -1,9 +1,12 @@
 <!---
-apt-fast v1.8
-Use this just like aptitude or apt-get for faster package downloading.
+APT-FAST v2.0 - Add a parallel download manager to APT-GET
+Faster APT-GET Installs, Updates and Upgrades using APT-FAST shellscript.
+
+https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-using-apt-fast-script-971a3a97f388#.oorvdah99
 
 Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
+Modified for Sumo-Stack, revisions - 2016 Will Preston
 
 You may distribute this file under the terms of the GNU General
 Public License as published by the Free Software Foundation; either
@@ -45,7 +48,7 @@ Some distros, such as PCLinuxOS include apt-fast in their repos.
 You can quickly install `apt-fast` by running:
 
 ```bash
-/bin/bash -c "$(curl -sL https://git.io/vokNn)"
+/bin/bash -c "$(curl -sL https://git.io/vXLa0)"
 ```
 
 ### Manual ###
@@ -103,6 +106,7 @@ Consider apt-fast and all of its derivatives licensed under the GNU GPLv3+.
 
 Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
+Modified for Sumo-Stack, revisions - 2016 Will Preston
 
 
 Special thanks

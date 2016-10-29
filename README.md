@@ -108,7 +108,6 @@ Consider APT-FAST and all of its derivatives licensed under the GNU GPLv3+.
 ⋅⋅⋅Improvements, maintenance, revisions - 2012 Dominique Lasserre
 ⋅⋅⋅Modified for Sumo-Stack, revisions - 2016 Will Preston
 
-
 ### Special thanks
 
  * Travis/travisn000 - support for complex apt-get commands

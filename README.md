@@ -112,13 +112,13 @@ Modified for Sumo-Stack, revisions - 2016 Will Preston
 
 
 ######Special thanks
---------------
-###### * Travis/travisn000 - support for complex apt-get commands
-###### * [Alan Hoffmeister](https://github.com/alanhoff) - aria2c support
-###### * Abhishek Sharma - aria2c with proxy support
-###### * Luca Marchetti - improvements on the locking system and downloader execution
-###### * Richard Klien - Autocompletion, Download Size Checking (made for on ubuntu, untested on other distros)
-###### * Patrick Kramer Ruiz - suggestions
-###### * Sergio Silva - test to see if axel is installed, root detection/sudo autorun, lock file check/creation
-###### * Waldemar {BOB}{Burnfaker} Wetzel - lockfile improvements, separate config file
-###### * maclarke - locking improvements
+------
+ * Travis/travisn000 - support for complex apt-get commands
+ * [Alan Hoffmeister](https://github.com/alanhoff) - aria2c support
+ * Abhishek Sharma - aria2c with proxy support
+ * Luca Marchetti - improvements on the locking system and downloader execution
+ * Richard Klien - Autocompletion, Download Size Checking (made for on ubuntu, untested on other distros)
+ * Patrick Kramer Ruiz - suggestions
+ * Sergio Silva - test to see if axel is installed, root detection/sudo autorun, lock file check/creation
+ * Waldemar {BOB}{Burnfaker} Wetzel - lockfile improvements, separate config file
+ * maclarke - locking improvements

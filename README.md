@@ -111,8 +111,8 @@ Improvements, maintenance, revisions - 2012 Dominique Lasserre
 Modified for Sumo-Stack, revisions - 2016 Will Preston
 
 
-Special thanks
-------
+### Special thanks
+
  * Travis/travisn000 - support for complex apt-get commands
  * [Alan Hoffmeister](https://github.com/alanhoff) - aria2c support
  * Abhishek Sharma - aria2c with proxy support

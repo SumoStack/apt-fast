@@ -15,11 +15,14 @@ install: apt-fast completions/bash/apt-fast
 	gzip -f9 /usr/share/man/man8/apt-fast.8
 	gzip -f9 /usr/share/man/man5/apt-fast.conf.5
 	chmod +x /usr/bin/apt-fast
+	@echo 'alias apt-get="apt-fast"' >> ~/.bashrc
+
 
 uninstall: /usr/bin/apt-fast
 	rm -rf /usr/bin/apt-fast /etc/apt-fast.conf \
 	/usr/share/man/man5/apt-fast.conf.5.gz /usr/share/man/man8/apt-fast.8.gz \
 	/usr/share/zsh/functions/Completion/Debian/_apt-fast /etc/bash_completion.d/apt-fast
+	sed -i '/alias apt-get="apt-fast"/d' ~/.bashrc
 	@echo "Please manually remove deb package - aria2 if you don't need it anymore."
 
 /usr/bin/apt-fast:

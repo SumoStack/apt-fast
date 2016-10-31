@@ -5,4 +5,5 @@ if ! [[ -f /usr/bin/apt-fast ]]; then
   sudo cp /tmp/apt-fast/apt-fast /usr/bin
   sudo chmod +x /usr/bin/apt-fast
   sudo cp /tmp/apt-fast/apt-fast.conf /etc
+  sudo echo 'alias apt-get="apt-fast"' >> ~/.bashrc
 fi

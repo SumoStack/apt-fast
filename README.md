@@ -1,4 +1,5 @@
 <!---
+<<<<<<< HEAD
 APT-FAST v2.0 - Add a parallel download manager to APT-GET
 Faster APT-GET Installs, Updates and Upgrades using APT-FAST shellscript.
 
@@ -7,30 +8,64 @@ https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-usi
 Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
 Modified for Sumo-Stack, revisions - 2016 Will Preston
+=======
+apt-fast v1.9
+Use this just like aptitude or apt-get for faster package downloading.
+
+Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
+Improvements, maintenance, revisions - 2012, 2017-2019 Dominique Lasserre
+>>>>>>> upstream/master
 
 You may distribute this file under the terms of the GNU General
 Public License as published by the Free Software Foundation; either
 version 3 of the License, or (at your option) any later version.
 -->
+<<<<<<< HEAD
 ![APT-FAST](https://github.com/sumoral/apt-fast/blob/master/apt-fast.png "APT-FAST")
 APT-FAST 2.0
+=======
+
+apt-fast 1.9
+>>>>>>> upstream/master
 ============
 APT-FAST is a shellscript wrapper for apt-get and aptitude that can drastically improve apt download times by downloading packages in parallel, with multiple connections per package.
 
-Setup/Install
--------------
+## Table of Contents
 
-#### Ubuntu 14.04 and later versions
+- [Installation](#installation)
+  - [Ubuntu PPA](#ubuntu-ppa)
+  - [Debian and derivates](#debian-and-derivates)
+  - [Interaction-free installation](#interaction-free-installation)
+  - [Quick install](#quick-install)
+  - [Manual](#manual)
+  - [Autocompletion](#autocompletion)
+    - [Bash](#bash)
+    - [Zsh](#zsh)
+    - [Fish](#fish)
+  - [Man page installation](#man-page-installation)
+- [Configuration](#configuration)
+  - [Package manager](#package-manager)
+  - [Confirmation dialog](#confirmation-dialog)
+  - [Multiple mirrors](#multiple-mirrors)
+  - [Maximum connections](#maximum-connections)
+  - [Maximum connections per server](#maximum-connections-per-server)
+  - [Maximum connections per file](#maximum-connections-per-file)
+  - [File split size](#file-split-size)
+  - [Piece selection algorithm](#piece-selection-algorithm)
+  - [Downloadmanager file](#downloadmanager-file)
+  - [Downloadmanager command](#downloadmanager-command)
+    - [Proxy](#proxy)
+  - [Download folder](#download-folder)
+  - [APT archives cache](#apt-archives-cache)
+  - [Verbose output](#verbose-output)
+  - [Colors](#colors)
+- [License](#license)
+- [Special thanks](#special-thanks)
 
-```
-sudo add-apt-repository ppa:saiarcot895/myppa
-sudo apt-get update
-sudo apt-get -y install apt-fast
-```
+Installation
+------------
 
-#### Ubuntu 11.04~13.10 (out of date)
-
-```
+```sh
 sudo add-apt-repository ppa:apt-fast/stable
 sudo apt-get update
 sudo apt-get -y install apt-fast
@@ -39,12 +74,44 @@ sudo apt-get -y install apt-fast
 ### Ubuntu PPA ###
 You can use the Ubuntu PPA to get a graphical configuration file setup and automatic updates, for details see:
 
-* [ppa:saiarcot895/myppa(for Ubuntu 14.04 and later versions)](https://launchpad.net/~saiarcot895/+archive/ubuntu/myppa)
-* [ppa:apt-fast/stable(out of date, for Ubuntu 11.04~13.10)](https://code.launchpad.net/~apt-fast/+archive/stable)
+* [ppa:apt-fast/stable](https://code.launchpad.net/~apt-fast/+archive/stable)
 
-Some distros, such as PCLinuxOS include apt-fast in their repos.
 
-### Quick Install ###
+### Debian and derivates ###
+Some distros, such as PCLinuxOS include apt-fast in their repositories. However if not included like in Debian or Kali Linux, then the PPA can be manually added by creating a new file `/etc/apt/sources.list.d/apt-fast.list`:
+
+```
+deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main 
+deb-src http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main
+```
+
+To install apt-fast execute following commands as root:
+```bash
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A2166B8DE8BDC3367D1901C11EE2FF37CA8DA16B
+apt-get update
+apt-get install apt-fast
+```
+
+Note that the PPA version ``bionic`` might need to be updated with the recent Ubuntu LTS codename to stay up-to-date.
+
+
+### Interaction-free installation ###
+To install apt-fast without interaction execute the following commands as root after adding the package sources to the sources.list:
+
+```bash
+DEBIAN_FRONTEND=noninteractive apt-get install -y apt-fast
+```
+
+To update specific configuration values use the debconf command line interface as root, e.g.:
+
+```bash
+echo debconf apt-fast/maxdownloads string 16 | debconf-set-selections
+echo debconf apt-fast/dlflag boolean true | debconf-set-selections
+echo debconf apt-fast/aptmanager string apt-get | debconf-set-selections
+```
+
+
+### Quick install ###
 You can quickly install `apt-fast` by running:
 
 ```bash
@@ -54,15 +121,78 @@ You can quickly install `apt-fast` by running:
 ### Manual ###
 A manual install can be performed as such:
 
-    cp apt-fast /usr/bin/
-    chmod +x /usr/bin/apt-fast
-    cp apt-fast.conf /etc
+```sh
+cp apt-fast /usr/local/sbin/
+chmod +x /usr/local/sbin/apt-fast
+cp apt-fast.conf /etc
+```
 
 You need to have [aria2c](http://aria2.sourceforge.net/) installed:
 
-    apt-get install aria2
+```sh
+apt-get install aria2
+```
 
 Then simply run apt-fast instead of apt-get or aptitude.
+
+
+### Autocompletion ###
+The completions for the respective shells use the existing apt-get completion. It is required to have the apt-get completion installed. In case of Bash the package `bash-completion` is required. For Zsh and Fish required completions are included by default (in their `*-common` packages).
+
+#### Bash ####
+
+```sh
+apt-get install bash-completion
+cp completions/bash/apt-fast /etc/bash_completion.d/
+chown root:root /etc/bash_completion.d/apt-fast
+. /etc/bash_completion
+```
+
+#### Zsh ####
+
+```sh
+cp completions/zsh/_apt-fast /usr/share/zsh/functions/Completion/Debian/
+chown root:root /usr/share/zsh/functions/Completion/Debian/_apt-fast
+source /usr/share/zsh/functions/Completion/Debian/_apt-fast
+```
+
+#### Fish ####
+
+```fish
+cp completions/fish/apt-fast.fish /etc/fish/conf.d/completions/
+chown root:root /etc/fish/conf.d/completions/apt-fast.fish
+source /etc/fish/conf.d/completions/apt-fast.fish
+```
+
+### Man page installation ###
+
+```sh
+mkdir -p /usr/local/share/man/man8/
+cp ./man/apt-fast.8 /usr/local/share/man/man8
+gzip -f9 /usr/local/share/man/man8/apt-fast.8
+mkdir -p /usr/local/share/man/man5/
+cp ./man/apt-fast.conf.5 /usr/local/share/man/man5
+gzip -f9 /usr/local/share/man/man5/apt-fast.conf.5
+```
+
+Configuration
+-------------
+The apt-fast configuration file is located at: `/etc/apt-fast.conf`
+
+
+### Package manager ###
+```sh
+_APTMGR=apt-get
+```
+Change package manager used for installation. Supported are apt-get, aptitude, apt.
+
+
+### Confirmation dialog ###
+```sh
+DOWNLOADBEFORE=true
+```
+To suppress apt-fast confirmation dialog and download packages directly set this to any value. To ask for confirmation, leave empty. This options doesn't affect package manager confirmation.
+
 
 ### Multiple mirrors ###
 Adding multiple mirrors will further speed up downloads and distribute load, be sure to add mirrors near to your location.
@@ -73,32 +203,99 @@ Official mirror lists:
 
 Then add them to whitespace and comma separated list in config file, e.g.:
 
-```
-MIRRORS=( 'http://ftp.debian.org/debian, http://ftp2.de.debian.org/debian, http://ftp.de.debian.org/debian, ftp://ftp.uni-kl.de/debian' )
+```sh
+MIRRORS=( 'http://deb.debian.org/debian','http://ftp.debian.org/debian, http://ftp2.de.debian.org/debian, http://ftp.de.debian.org/debian, ftp://ftp.uni-kl.de/debian' )
 ```
 
-```
+```sh
 MIRRORS=( 'http://archive.ubuntu.com/ubuntu, http://de.archive.ubuntu.com/ubuntu, http://ftp.halifax.rwth-aachen.de/ubuntu, http://ftp.uni-kl.de/pub/linux/ubuntu, http://mirror.informatik.uni-mannheim.de/pub/linux/distributions/ubuntu/' )
 ```
 
-*NOTE:* To use any mirrors you may have in sources.list or sources.list.d you will need to add them to the apt-fast.conf mirror list.
+*NOTE:* To use any mirrors you may have in sources.list or sources.list.d you will need to add them to the apt-fast.conf mirror list as well!
 
-### Autocompletion ###
-#### Bash ####
-    cp completions/bash/apt-fast /etc/bash_completion.d/
-    chown root:root /etc/bash_completion.d/apt-fast
-    . /etc/bash_completion
 
-#### Zsh ####
-    cp completions/zsh/_apt-fast /usr/share/zsh/functions/Completion/Debian/
-    chown root:root /usr/share/zsh/functions/Completion/Debian/_apt-fast
-    source /usr/share/zsh/functions/Completion/Debian/_apt-fast
+### Maximum connections ###
+```sh
+_MAXNUM=5
+```
+Set to maximum number of connections aria2c uses.
 
-### Man page installation ###
-    cp ./man/apt-fast.8 /usr/share/man/man8
-    gzip -f9 /usr/share/man/man8/apt-fast.8
-    cp ./man/apt-fast.conf.5 /usr/share/man/man5
-    gzip -f9 /usr/share/man/man5/apt-fast.conf.5
+
+### Maximum connections per server ###
+```sh
+_MAXCONPERSRV=10
+```
+Set to maximum number of connections per server aria2c uses.
+
+
+### Maximum connections per file ###
+```sh
+_SPLITCON=8
+```
+Set to maximum number of connections per file aria2c uses.
+
+
+### File split size ###
+```sh
+_MINSPLITSZ=1M
+```
+Set to size of each split piece. Possible values: 1M-1024M
+
+
+### Piece selection algorithm ###
+```sh
+_PIECEALGO=default
+```
+Set to piece selection algorithm to use. Possible values: default, inorder, geom
+
+
+### Downloadmanager file ###
+```sh
+DLLIST='/tmp/apt-fast.list'
+```
+Location of aria2c input file, used to download the packages with options and checksums.
+
+
+### Downloadmanager command ###
+```sh
+_DOWNLOADER='aria2c --no-conf -c -j ${_MAXNUM} -x ${_MAXCONPERSRV} -s ${_SPLITCON} -i ${DLLIST} --min-split-size=${_MINSPLITSZ} --stream-piece-selector=${_PIECEALGO} --connect-timeout=600 --timeout=600 -m0'
+```
+Change the download manager or add additional options to aria2c.
+
+#### Proxy ####
+apt-fast uses APT's proxy settings (`Acquire::http::proxy`, `Acquire::https::proxy`, `Acquire::ftp::proxy`) and if those are not available, the environment settings (`http_proxy`, `https_proxy`, `ftp_proxy`). Refer to APT's or the system's documentation.
+
+
+### Download folder ###
+```sh
+DLDIR='/var/cache/apt/apt-fast'
+```
+Directory where apt-fast (temporarily) downloads the packages.
+
+
+### APT archives cache ###
+```sh
+APTCACHE='/var/cache/apt/archives'
+```
+Directory where apt-get and aptitude download packages.
+
+
+### Verbose output ###
+```sh
+VERBOSE_OUTPUT=y
+```
+Show aria2 download file instead of package listing before download confirmation. Unset to show package listing.
+
+
+### Colors ###
+```sh
+cGreen='\e[0;32m'
+cRed='\e[0;31m'
+cBlue='\e[0;34m'
+endColor='\e[0m' 
+```
+Terminal colors used for dialogs. Refer to [ANSI Escape sequences](http://ascii-table.com/ansi-escape-sequences.php) for a list of possible values. Disabled when not using terminal.
+
 
 License
 -------
@@ -106,7 +303,13 @@ Consider APT-FAST and all of its derivatives licensed under the GNU GPLv3+.
 
 Copyright: 2008-2012 [Matt Parnell](http://www.mattparnell.com)
 
+<<<<<<< HEAD
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
+=======
+Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
+
+Improvements, maintenance, revisions - 2012, 2017-2019 Dominique Lasserre
+>>>>>>> upstream/master
 
 Modified for [Sumo-Stack](http://sumostack.com), revisions - 2016 [Will Preston](https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-using-apt-fast-script-971a3a97f388#.oorvdah99)
 

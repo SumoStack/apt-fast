@@ -1,34 +1,21 @@
-<!---
-<<<<<<< HEAD
+![APT-FAST](https://github.com/sumoral/apt-fast/blob/master/apt-fast.png "APT-FAST")
 APT-FAST v2.0 - Add a parallel download manager to APT-GET
 Faster APT-GET Installs, Updates and Upgrades using APT-FAST shellscript.
 
 https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-using-apt-fast-script-971a3a97f388#.oorvdah99
 
+APT-FAST is a shellscript wrapper for apt-get and aptitude that can drastically improve apt download times by downloading packages in parallel, with multiple connections per package.
+
+Use this just like aptitude or apt-get for faster package downloading.
+
+
 Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
 Modified for Sumo-Stack, revisions - 2016 Will Preston
-=======
-apt-fast v1.9
-Use this just like aptitude or apt-get for faster package downloading.
-
-Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
-Improvements, maintenance, revisions - 2012, 2017-2019 Dominique Lasserre
->>>>>>> upstream/master
 
 You may distribute this file under the terms of the GNU General
 Public License as published by the Free Software Foundation; either
 version 3 of the License, or (at your option) any later version.
--->
-<<<<<<< HEAD
-![APT-FAST](https://github.com/sumoral/apt-fast/blob/master/apt-fast.png "APT-FAST")
-APT-FAST 2.0
-=======
-
-apt-fast 1.9
->>>>>>> upstream/master
-============
-APT-FAST is a shellscript wrapper for apt-get and aptitude that can drastically improve apt download times by downloading packages in parallel, with multiple connections per package.
 
 ## Table of Contents
 

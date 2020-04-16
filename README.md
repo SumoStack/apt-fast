@@ -11,7 +11,7 @@ Use this just like aptitude or apt-get for faster package downloading.
 
 Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
 Improvements, maintenance, revisions - 2012 Dominique Lasserre
-Modified for Sumo-Stack, revisions - 2016 Will Preston
+Modified for Sumo-Stack, revisions - 2020 Will Preston
 
 You may distribute this file under the terms of the GNU General
 Public License as published by the Free Software Foundation; either

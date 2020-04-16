@@ -1,19 +1,13 @@
 #!/bin/bash
 #
-<<<<<<< HEAD
 # APT-FAST v2.0
 # Use this just like aptitude or apt-get for faster package downloading.
 #
 # Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
-# Improvements, maintenance, revisions - 2012 Dominique Lasserre
-# Modified for Sumo-Stack http://sumostack.com, revisions - 2016 Will Preston https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-using-apt-fast-script-971a3a97f388#.oorvdah99
-=======
-# apt-fast v1.9
-# Use this just like aptitude or apt-get for faster package downloading.
-#
-# Copyright: 2008-2012 Matt Parnell, http://www.mattparnell.com
 # Improvements, maintenance, revisions - 2012, 2017-2019 Dominique Lasserre
->>>>>>> upstream/master
+# Modified for Sumo-Stack http://sumostack.com, revisions - 2020 Will Preston https://medium.com/will-preston/faster-apt-get-installs-updates-and-upgrades-using-apt-fast-script-971a3a97f388#.oorvdah99
+#
+# Use this just like aptitude or apt-get for faster package downloading.
 #
 # You may distribute this file under the terms of the GNU General
 # Public License as published by the Free Software Foundation; either
